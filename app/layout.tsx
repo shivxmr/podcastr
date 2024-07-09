@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 import ConvexClerkProvider from "@/providers/ConvexClerkProvider";
-import AudioProvider from "@/providers/AudioProvider";
 
 
 
@@ -22,14 +29,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ConvexClerkProvider>
-      <html lang="en">
-        {/* <AudioProvider> */}
-          <body className={`${manrope.className}`}>
-              {children}
-          </body>
-        {/* </AudioProvider> */}
-      </html>
-    </ConvexClerkProvider>
-  );
+ 
+    <html lang='en'>
+      <body>
+        
+        <ConvexClerkProvider>
+
+        {children}
+        </ConvexClerkProvider>
+      </body>
+    </html>
+  
+)
 }
